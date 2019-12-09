@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="Hashgraph.SigningTool.Step3"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:gui="http://hashgraph.net/2019/ui/wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <gui:ToggleTextConverter x:Key="ToggleTextConverter"/>
+    </UserControl.Resources>
+    <DockPanel Background="{DynamicResource ContentBackground}">
+        <TextBlock DockPanel.Dock="Top" Style="{DynamicResource HeaderStyle}">
+            <Bold>Step 3:</Bold> Enter Transaction
+        </TextBlock>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <TextBlock Grid.Row="1" Style="{DynamicResource DescriptionStyle}">
+                    Please paste the transaction you wish to sign 
+                    below.  (It should be in the form of a Hex 
+                    Encoded String representing the “protobuf” 
+                    encoding of the transaction.)
+                </TextBlock>
+                <StackPanel Style="{StaticResource ButtonSectionStyle}">
+                    <Button Click="OnPasteTransactionFromClipboard" Style="{StaticResource StepButtonStyle}">
+                        <TextBlock HorizontalAlignment="Left" Width="370">
+                            <Bold>Paste Transaction and Continue</Bold>
+                            <LineBreak/>
+                            <Span FontSize="{DynamicResource SmallerFontSize}">Paste the <Italic>Encoded Transaction</Italic> from Clipboard</Span>
+                        </TextBlock>
+                    </Button>
+                    <Button Click="OnChangeSigningKeys" Style="{StaticResource StepButtonStyle}">
+                        <TextBlock HorizontalAlignment="Left" Width="370">
+                            <Bold>Go Back</Bold>
+                            <LineBreak/>                            
+                            <Span FontSize="{DynamicResource SmallerFontSize}">Change <Italic>Private</Italic> <Run Text="{Binding SingularLanguage, ConverterParameter='Key|Keys', Converter={StaticResource ToggleTextConverter}, Mode=OneTime}"/></Span>
+                        </TextBlock>
+                    </Button>
+                </StackPanel>
+                <TextBlock Text="{Binding ValidationMessage, Mode=OneWay}" Style="{DynamicResource ErrorStyle}"/>
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>

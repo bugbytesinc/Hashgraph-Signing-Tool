@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29503.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hashgraph.UI.WPF", "Hashgraph.UI.WPF\Hashgraph.UI.WPF.csproj", "{0DE2BEB5-0A90-43F9-9CB9-1CF829098168}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hashgraph.SigningTool", "Hashgraph.SigningTool\Hashgraph.SigningTool.csproj", "{9629DD37-3D50-4862-AD7E-683B2597DF0E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0DE2BEB5-0A90-43F9-9CB9-1CF829098168}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DE2BEB5-0A90-43F9-9CB9-1CF829098168}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DE2BEB5-0A90-43F9-9CB9-1CF829098168}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DE2BEB5-0A90-43F9-9CB9-1CF829098168}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9629DD37-3D50-4862-AD7E-683B2597DF0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9629DD37-3D50-4862-AD7E-683B2597DF0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9629DD37-3D50-4862-AD7E-683B2597DF0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9629DD37-3D50-4862-AD7E-683B2597DF0E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DDD53395-1BC6-441F-BFED-D83E1F93AA5B}
+	EndGlobalSection
+EndGlobal

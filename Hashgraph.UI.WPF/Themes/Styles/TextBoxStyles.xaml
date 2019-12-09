@@ -1,0 +1,52 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ControlTemplate x:Key="TextBoxTemplate" TargetType="{x:Type TextBox}">
+        <Border x:Name="border" 
+                Background="{TemplateBinding Background}" 
+                BorderThickness="{TemplateBinding BorderThickness}" 
+                BorderBrush="{TemplateBinding BorderBrush}" 
+                SnapsToDevicePixels="True">
+            <ScrollViewer x:Name="PART_ContentHost" 
+                          Focusable="false" 
+                          HorizontalScrollBarVisibility="Hidden" 
+                          VerticalScrollBarVisibility="Hidden"/>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Opacity" TargetName="border" Value="{DynamicResource ControlDisabledOpacity}"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource ControlMouseOverBorder}"/>
+            </Trigger>
+            <Trigger Property="IsKeyboardFocused" Value="true">
+                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource ControlFocusBorder}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style x:Key="TextBoxStyle" TargetType="{x:Type TextBox}">
+        <Setter Property="Background" Value="{DynamicResource ControlContentBackground}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlBorder}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ControlForeground}"/>
+        <Setter Property="FontSize" Value="{DynamicResource NormalFontSize}"/>
+        <Setter Property="SelectionBrush" Value="{DynamicResource ControlHighlightBackground}" />
+        <Setter Property="CaretBrush" Value="{DynamicResource ControlForeground}" />
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="AllowDrop" Value="true"/>
+        <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        <Setter Property="Template" Value="{StaticResource TextBoxTemplate}"/>
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                    <Condition Property="IsSelectionActive" Value="false"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="SelectionBrush" Value="{DynamicResource ControlHighlightBackground}"/>
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style BasedOn="{StaticResource TextBoxStyle}" TargetType="{x:Type TextBox}"/>
+</ResourceDictionary>

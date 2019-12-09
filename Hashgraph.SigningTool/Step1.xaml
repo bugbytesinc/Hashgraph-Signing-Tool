@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="Hashgraph.SigningTool.Step1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:gui="http://hashgraph.net/2019/ui/wpf"
+             xmlns:local="clr-namespace:Hashgraph.SigningTool"             
+             mc:Ignorable="d"                 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <DockPanel Background="{DynamicResource ContentBackground}">
+        <TextBlock DockPanel.Dock="Top" Style="{DynamicResource HeaderStyle}">
+            <Bold>Step 1: </Bold>
+            Enter Private Signing Key
+        </TextBlock>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <TextBlock Style="{StaticResource DescriptionStyle}">
+                    Please enter your <Italic>Ed25519</Italic> private key that you 
+                    wish to sign transactions with.  It must be in the form of a hex 
+                    encoded string of 48 bytes in length and start with the prefix 
+                    <Bold>0x302e020100300506032b6570</Bold>.  Sorry, mnemonic phrases 
+                    are not supported at this time.
+                </TextBlock>
+                <TextBlock Style="{StaticResource LabelStyle}">
+                    Ed25519 <Italic>Private Key</Italic>
+                </TextBlock>
+                <DockPanel Style="{StaticResource DockSectionStyle}">
+                    <Button DockPanel.Dock="Right" Margin="18 0 0 0" Click="OnPasteFromClipboard">Paste</Button>
+                    <TextBox Text="{Binding PrivateKeyInHex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=300}" Style="{StaticResource StepTextBox}"/>
+                </DockPanel>
+                <StackPanel Style="{DynamicResource ButtonSectionStyle}">
+                    <Button Click="OnConfirmPrivateKey" IsEnabled="{Binding CanContinue, Mode=OneWay}">
+                        <TextBlock>
+                        <Bold>Continue</Bold> to Step 2
+                        <LineBreak/>
+                        <Run FontSize="{DynamicResource SmallerFontSize}">Confirm and Verify Private Key</Run>
+                        </TextBlock>
+                    </Button>
+                </StackPanel>
+                <TextBlock Text="{Binding ValidationMessage, Mode=OneWay}" Style="{DynamicResource ErrorStyle}"/>
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>

@@ -1,0 +1,45 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ControlTemplate x:Key="GroupBoxTemplate" TargetType="{x:Type GroupBox}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Border x:Name="PART_Border"
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    IsHitTestVisible="False" />
+            <Border x:Name="PART_Header"
+                    Grid.Row="0"
+                    Padding="0,0,0,4"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}">
+                <ContentPresenter ContentSource="Header"
+                                  RecognizesAccessKey="True"
+                                  TextBlock.FontSize="14"
+                                  TextBlock.FontWeight="SemiBold"
+                                  TextBlock.Foreground="{DynamicResource GroupBoxHeaderForeground}" />
+            </Border>
+            <ContentPresenter x:Name="Content" 
+                              Grid.Row="1" 
+                              Margin="{TemplateBinding Padding}" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="{DynamicResource ControlDisabledOpacity}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="GroupBoxStyle" TargetType="{x:Type GroupBox}">
+        <Setter Property="Foreground" Value="{DynamicResource ContentForeground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource GroupBoxHeaderBorder}" />
+        <Setter Property="FontSize" Value="{DynamicResource NormalFontSize}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="Padding" Value="8,16,8,8" />
+        <Setter Property="Template" Value="{StaticResource GroupBoxTemplate}" />
+    </Style>
+    <Style BasedOn="{StaticResource GroupBoxStyle}" TargetType="{x:Type GroupBox}" />
+
+</ResourceDictionary>

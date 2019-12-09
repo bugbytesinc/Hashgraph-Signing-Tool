@@ -1,0 +1,64 @@
+﻿<Application x:Class="Hashgraph.SigningTool.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Hashgraph.SigningTool"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Hashgraph.UI.WPF;component/Themes/Hashgraph.UI.WPF.xaml"/>
+                <ResourceDictionary>
+                    <Style x:Key="HeaderStyle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextBlockStyle}" >
+                        <Setter Property="Foreground" Value="{DynamicResource GroupBoxHeaderForeground}"/>
+                        <Setter Property="FontSize" Value="{DynamicResource LargerFontSize}"/>
+                        <Setter Property="Margin" Value="24 24 24 18"/>
+                        <Setter Property="TextWrapping" Value="Wrap"/>
+                    </Style>
+                    <Style x:Key="DescriptionStyle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextBlockStyle}">
+                        <Setter Property="Margin" Value="24 0 24 18"/>
+                        <Setter Property="TextWrapping" Value="Wrap"/>
+                    </Style>
+                    <Style x:Key="LabelStyle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextBlockStyle}">
+                        <Setter Property="Foreground" Value="{DynamicResource GroupBoxHeaderForeground}"/>
+                        <Setter Property="Margin" Value="24 0 24 0"/>
+                        <Setter Property="TextWrapping" Value="Wrap"/>
+                    </Style>
+                    <Style x:Key="TableLabelStyle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextBlockStyle}">
+                        <Setter Property="Foreground" Value="{DynamicResource SecondaryContentForeground}"/>
+                        <Setter Property="Margin" Value="0 0 18 0"/>
+                        <Setter Property="TextWrapping" Value="Wrap"/>
+                    </Style>
+                    <Style x:Key="ErrorStyle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextBlockStyle}">
+                        <Setter Property="Foreground" Value="{DynamicResource ErrorContentForeground}"/>
+                        <Setter Property="FontSize" Value="{DynamicResource NormalFontSize}"/>
+                        <Setter Property="Margin" Value="24 0 24 18"/>
+                        <Setter Property="TextWrapping" Value="Wrap"/>
+                    </Style>
+                    <Style x:Key="StepTextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource TextBoxStyle}">
+                        <Setter Property="Padding" Value="16 8"/>
+                        <Setter Property="MaxHeight" Value="50"/>
+                    </Style>
+                    <Style x:Key="TransactionDetailsStyle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextBlockStyle}">
+                        <Setter Property="Foreground" Value="{DynamicResource ContentForeground}"/>
+                        <Setter Property="FontSize" Value="{DynamicResource NormalFontSize}"/>
+                        <Setter Property="Margin" Value="24 0 24 18"/>
+                        <Setter Property="TextWrapping" Value="Wrap"/>
+                        <Setter Property="FontFamily" Value="Consolas"/>
+                    </Style>
+                    <Style x:Key="StepButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
+                        <Setter Property="Margin" Value="0 0 0 8"/>
+                    </Style>
+                    <Style x:Key="GridSectionStyle" TargetType="{x:Type Grid}">
+                        <Setter Property="Margin" Value="24 0 24 18"/>
+                    </Style>
+                    <Style x:Key="DockSectionStyle" TargetType="{x:Type DockPanel}">
+                        <Setter Property="Margin" Value="24 0 24 18"/>
+                    </Style>
+                    <Style x:Key="ButtonSectionStyle" TargetType="{x:Type StackPanel}">
+                        <Setter Property="Margin" Value="24 8 24 18"/>
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,38 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+    <SolidColorBrush x:Key="ContentBackground" Color="#FFFFFFFF"/>
+    <SolidColorBrush x:Key="ContentForeground" Color="#FF3F3F3F"/>
+    <SolidColorBrush x:Key="ControlForeground" Color="#FF3F3F3F"/>
+    <SolidColorBrush x:Key="ControlBackground" Color="#FFDBDEE3"/>
+    <SolidColorBrush x:Key="ControlBorder" Color="#828bA0"/>
+    <SolidColorBrush x:Key="ControlContentBackground" Color="#FFFFFFFF"/>
+    <SolidColorBrush x:Key="ControlHighlightBackground" Color="#FF943AB4"/>
+    <SolidColorBrush x:Key="ControlMouseOverBackground" Color="#EAEDF4"/>
+    <SolidColorBrush x:Key="ControlPressedBackground" Color="#BCBFC6"/>
+    <SolidColorBrush x:Key="ControlPressedBorder" Color="#FF3D91FD"/>
+    <SolidColorBrush x:Key="GlyphForeground" Color="#FF646769"/>
+    <SolidColorBrush x:Key="GroupBoxHeaderBorder" Color="#FF8632A4"/>
+    <SolidColorBrush x:Key="GroupBoxHeaderForeground" Color="#FF8632A4"/>
+    <SolidColorBrush x:Key="ErrorContentForeground" Color="#FF9A3213"/>
+    <SolidColorBrush x:Key="SecondaryContentForeground" Color="#993F3F3F"/>
+    <SolidColorBrush x:Key="SecondaryControlForeground" Color="#FF5C1579"/>
+
+    <SolidColorBrush x:Key="ControlDefaultBorder" Color="#FFC12B8A"/>
+    <SolidColorBrush x:Key="ControlMouseOverBorder" Color="#FF8632A4"/>
+    <SolidColorBrush x:Key="ControlFocusBorder" Color="#FF943AB4"/>
+    <SolidColorBrush x:Key="ListMouseOverBackground" Color="#FF943AB4"/>
+    <SolidColorBrush x:Key="ListMouseOverBorder" Color="#FF8F2B76"/>
+    <SolidColorBrush x:Key="ListSelectedBackground" Color="#FF943AB4"/>
+    <SolidColorBrush x:Key="ListSelectedBorder" Color="#FFA82E95"/>
+    <SolidColorBrush x:Key="ListSelectedForeground" Color="#FFFFFFFF"/>
+    <SolidColorBrush x:Key="WindowBorder" Color="#FF61657B"/>
+    <SolidColorBrush x:Key="WindowActiveBorder" Color="#FF943AB4"/>
+    <SolidColorBrush x:Key="WindowControlMouseOverBackground" Color="#FFba6ada"/>
+    <SolidColorBrush x:Key="WindowHeaderForeground" Color="#FFFFFFFF"/>
+    <SolidColorBrush x:Key="WindowHeaderBackground" Color="#FF943AB4"/>
+    <sys:Double x:Key="ControlDisabledOpacity">0.4</sys:Double>
+    <sys:Double x:Key="LargeFontSize">32</sys:Double>
+    <sys:Double x:Key="NormalFontSize">24</sys:Double>
+    <sys:Double x:Key="SmallerFontSize">18</sys:Double>
+</ResourceDictionary>

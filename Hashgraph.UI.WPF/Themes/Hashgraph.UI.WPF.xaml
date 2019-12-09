@@ -1,0 +1,13 @@
+﻿<!--
+    Special thanks to Keith Harvey and his Pluralsight class
+    "Advanced Reusable Styles and Themes in WPF" for guidance
+    on how to structure this common WPF centric UI Library.
+ -->
+ <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Icons.xaml" />
+        <ResourceDictionary Source="System.Windows.xaml"/>
+        <ResourceDictionary Source="Controls/PublicKeyControlStyles.xaml"/>
+        <ResourceDictionary Source="Controls/PublicKeyFingerprintControlStyles.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

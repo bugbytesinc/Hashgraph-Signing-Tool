@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon />
+    <StartupObject />
+    <Version>0.0.0</Version>
+    <Authors>BugBytes, Inc.</Authors>
+    <Company>BugBytes, Inc.</Company>
+    <Description>Library of Reusable styles for Hasgraph Releated User Interface Applications</Description>
+    <Copyright>BugBytes, Inc.</Copyright>
+    <PackageLicenseExpression>Apache 2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/bugbytesinc/Hashgraph</PackageProjectUrl>
+    <RepositoryUrl />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hashgraph" Version="4.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Themes\Controls\PublicKeyFingerprintControlStyles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\Styles\ToolTipStyles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

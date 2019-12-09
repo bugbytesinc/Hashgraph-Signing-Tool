@@ -1,0 +1,101 @@
+﻿<UserControl x:Class="Hashgraph.SigningTool.AllInOneStep"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:gui="http://hashgraph.net/2019/ui/wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <gui:EmptyToVisibleConverter x:Key="EmptyToVisibleConverter"/>
+        <gui:NonEmptyToVisibleConverter x:Key="NonEmptyToVisibleConverter"/>
+        <gui:ZeroToVisibileConverter x:Key="ZeroToVisibileConverter"/>
+        <gui:NonZeroToVisibileConverter x:Key="NonZeroToVisibileConverter"/>
+        <gui:ToggleTextConverter x:Key="ToggleTextConverter"/>
+        <gui:StringToPublicKeyConverter x:Key="StringToPublicKeyConverter"/>
+        <gui:ObjectToVisibilityConverter x:Key="ObjectToVisibilityConverter"/>
+        <gui:NonEmptyStringToVisibileConverter x:Key="NonEmptyStringToVisibileConverter"/>
+    </UserControl.Resources>
+    <DockPanel  Background="{DynamicResource ContentBackground}">
+        <StackPanel Style="{StaticResource ButtonSectionStyle}" DockPanel.Dock="Bottom">
+            <Button Style="{StaticResource StepButtonStyle}" Click="OnPasteKeyFromClipboard">
+                <TextBlock HorizontalAlignment="Left" Width="380">
+                    <Bold>Add Signing Key</Bold>
+                    <LineBreak/>
+                    <Run FontSize="{DynamicResource SmallerFontSize}"
+                            Text="{Binding AdditionalLanguage, ConverterParameter='Paste an additional Ed25519 Private Signing Key|Paste an Ed25519 Private Signing Key', Converter={StaticResource ToggleTextConverter}}"/>
+                </TextBlock>
+            </Button>
+            <Button Style="{StaticResource StepButtonStyle}" Click="OnPasteTransactionFromClipboard">
+                <TextBlock HorizontalAlignment="Left" Width="380">
+                    <Bold>Set Transaction</Bold>
+                    <LineBreak/>
+                    <Span FontSize="{DynamicResource SmallerFontSize}">Paste Transaction from Clipboard</Span>
+                </TextBlock>
+            </Button>
+            <Button Style="{StaticResource StepButtonStyle}" IsEnabled="{Binding CanSignTransaction}" Click="OnSignTransaction">
+                <TextBlock HorizontalAlignment="Left" Width="380">
+                    <Bold>Sign</Bold>
+                    <LineBreak/>
+                    <Span FontSize="{DynamicResource SmallerFontSize}"><Italic>Sign</Italic> Transaction and Paste to Clipboard</Span>
+                </TextBlock>
+            </Button>
+        </StackPanel>
+        <TextBlock Text="{Binding ValidationMessage}" 
+                   Style="{DynamicResource ErrorStyle}" 
+                   DockPanel.Dock="Bottom"
+                   Visibility="{Binding ValidationMessage, Converter={StaticResource NonEmptyStringToVisibileConverter}}"/>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0 0 0 12">
+            <StackPanel>
+                <StackPanel Visibility="{Binding PublicKeys, Converter={StaticResource NonEmptyToVisibleConverter}}">
+                    <TextBlock Style="{StaticResource HeaderStyle}">
+                    Signing 
+                    <Run Text="{Binding SingularLanguage, ConverterParameter='Key|Keys', Converter={StaticResource ToggleTextConverter}}"/> 
+                    <Run Text="{Binding SingularLanguage, ConverterParameter='(Public Value)|(Public Values)', Converter={StaticResource ToggleTextConverter}}" Foreground="{DynamicResource SecondaryContentForeground}"/>
+                    </TextBlock>
+                    <ItemsControl ItemsSource="{Binding PublicKeys}" Margin="24 8 24 0">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <DockPanel Margin="0 0 0 18">
+                                    <Button DockPanel.Dock="Right" VerticalAlignment="Top" Style="{DynamicResource RemoveFromListButtonStyle}" Click="OnRemovePrivateKey" Tag="{Binding}"/>
+                                    <gui:PublicKeyControl PublicKey="{Binding ., Converter={StaticResource StringToPublicKeyConverter}}" TextWrapping="Wrap"/>
+                                </DockPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+                <TextBlock Visibility="{Binding PublicKeys, Converter={StaticResource EmptyToVisibleConverter}}"
+                       Margin="24 24 24 18"
+                       Style="{StaticResource DescriptionStyle}">
+                Waiting for signing keys...
+                </TextBlock>
+                <StackPanel Visibility="{Binding Transaction, Converter={StaticResource ObjectToVisibilityConverter}}">
+                    <Grid Style="{StaticResource GridSectionStyle}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Foreground="{DynamicResource GroupBoxHeaderForeground}" Visibility="{Binding Transaction.RemainingSeconds, Converter={StaticResource NonZeroToVisibileConverter}}">Transaction</TextBlock>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Visibility="{Binding Transaction.RemainingSeconds, Converter={StaticResource NonZeroToVisibileConverter}}">Expires in <Run Text="{Binding Transaction.RemainingSeconds}" Foreground="{DynamicResource GroupBoxHeaderForeground}"/> seconds.</TextBlock>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Visibility="{Binding Transaction.RemainingSeconds, Converter={StaticResource ZeroToVisibileConverter}}" TextWrapping="Wrap"><Run Foreground="{DynamicResource GroupBoxHeaderForeground}">Transaction has Expired</Run>, it will no longer be accepted by the network.</TextBlock>
+                        <Button Grid.Row="0" Grid.Column="2" VerticalAlignment="Top" Style="{DynamicResource RemoveFromListButtonStyle}" Click="OnClearTransaction"/>
+                        <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource TableLabelStyle}">Transaction ID</TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Transaction.TxId}"/>
+                        <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource TableLabelStyle}">Network Node</TextBlock>
+                        <TextBlock Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Transaction.NetworkNode}"/>
+                        <TextBlock Grid.Row="3" Grid.Column="0" Style="{StaticResource TableLabelStyle}">Memo</TextBlock>
+                        <TextBlock Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" TextWrapping="Wrap" Text="{Binding Transaction.Memo}"/>
+                    </Grid>
+                    <TextBlock Text="{Binding Transaction.Body}" Style="{StaticResource TransactionDetailsStyle}"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>

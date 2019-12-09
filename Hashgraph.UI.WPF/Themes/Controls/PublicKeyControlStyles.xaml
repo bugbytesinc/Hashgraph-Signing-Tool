@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Hashgraph.UI.WPF.Controls">
+    <ControlTemplate x:Key="PublicKeyControlTemplate" TargetType="{x:Type local:PublicKeyControl}">
+        <TextBlock TextWrapping="{TemplateBinding TextWrapping}" 
+                   Foreground="{TemplateBinding Foreground}"
+                   Background="{TemplateBinding Background}"
+                   ><Run x:Name="PART_Prefix" Foreground="{TemplateBinding PrefixForeground}"/><Run x:Name="PART_Value"/></TextBlock>
+    </ControlTemplate>
+    <Style TargetType="{x:Type local:PublicKeyControl}">
+        <Setter Property="Template" Value="{StaticResource PublicKeyControlTemplate}"/>
+        <Setter Property="PrefixForeground" Value="{DynamicResource SecondaryContentForeground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ContentForeground}"/>
+        <Setter Property="AbbreviatePrefix" Value="True"/>
+        <Setter Property="TextWrapping" Value="NoWrap"/>
+    </Style>
+</ResourceDictionary>
