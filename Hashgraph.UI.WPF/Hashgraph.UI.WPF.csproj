@@ -14,6 +14,7 @@
     <PackageLicenseExpression>Apache 2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/bugbytesinc/Hashgraph</PackageProjectUrl>
     <RepositoryUrl />
+    <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
